@@ -29,7 +29,7 @@
     src: "{{ openshift.common.examples_content_version }}/{{ item }}"
     dest: "{{ mktemp.stdout }}/{{ item }}"
   with_items:
-  - "glusterblock-template.yml"
+  - "glusterblock-provisioner.yml"
 
 - name: Create glusterblock provisioner template
   oc_obj:
@@ -38,7 +38,7 @@
     name: "glusterblock"
     state: present
     files:
-    - "{{ mktemp.stdout }}/glusterblock-template.yml"
+    - "{{ mktemp.stdout }}/glusterblock-provisioner.yml"
 
 - name: Deploy glusterblock provisioner
   oc_process:
